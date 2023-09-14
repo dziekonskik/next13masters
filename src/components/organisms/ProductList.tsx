@@ -1,5 +1,5 @@
 import { ProductListItem } from "../molecules/ProductListItem";
-import { type Product } from "../types";
+import { type Product } from "../../utils/types";
 
 type ProductListProps = {
 	products: Product[];
