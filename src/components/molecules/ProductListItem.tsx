@@ -1,4 +1,5 @@
-import { type Product } from "../types";
+import Link from "next/link";
+import { type Product } from "../../utils/types";
 import { ProductImage } from "../atoms/ProductImage";
 import { ProductListItemDescription } from "../atoms/ProductListItemDescription";
 
@@ -9,8 +10,10 @@ type ProductListItemProps = {
 export const ProductListItem = ({ product }: ProductListItemProps) => {
 	return (
 		<li className="flex flex-col items-center justify-between p-4 bg-white rounded-lg shadow-lg">
-			<ProductImage src={product.image.src} alt={product.image.alt} />
-			<ProductListItemDescription details={product} />
+			<Link href={`/products/${product.id}`}>
+				<ProductImage src={product.image} alt={product.title} />
+				<ProductListItemDescription details={product} />
+			</Link>
 		</li>
 	);
 };
