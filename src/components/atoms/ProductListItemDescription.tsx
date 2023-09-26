@@ -1,18 +1,16 @@
+import { type ProductListItemFragmentFragment } from "@/gql/graphql";
+
 type ProductListItemDescriptionProps = {
-	details: {
-		title: string;
-		category: string;
-		price: number;
-	};
+	details: Pick<ProductListItemFragmentFragment, "name" | "categories" | "price">;
 };
 
 export const ProductListItemDescription = ({
-	details: { title, category, price },
+	details: { name, categories, price },
 }: ProductListItemDescriptionProps) => {
 	return (
 		<div className="flex flex-col justify-between text-center">
-			<h3 className="text-lg font-semibold text-gray-500 ">{title}</h3>
-			<p className="text-sm text-gray-500 ">{category}</p>
+			<h3 className="text-lg font-semibold text-gray-500 ">{name}</h3>
+			<p className="text-sm text-gray-500 ">{categories?.data[0].attributes?.name}</p>
 			<p className="text-lg font-semibold text-slate-600">${price}</p>
 		</div>
 	);
