@@ -1,0 +1,22 @@
+fragment ProductListItemFragment on Product {
+	slug
+	price
+	name
+	images {
+		data {
+			attributes {
+				url
+				width
+				height
+				alternativeText
+			}
+		}
+	}
+	categories {
+		data {
+			attributes {
+				name
+			}
+		}
+	}
+}

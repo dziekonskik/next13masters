@@ -1,0 +1,9 @@
+query ProductsGetListPaginated($pagination: PaginationArg) {
+	products(pagination: $pagination) {
+		data {
+			attributes {
+				...ProductListItemFragment
+			}
+		}
+	}
+}
