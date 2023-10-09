@@ -1,0 +1,7 @@
+mutation CategoryCreate($name: String!, $slug: String!) {
+	createCategory(data: { name: $name, slug: $slug }) {
+		data {
+			id
+		}
+	}
+}

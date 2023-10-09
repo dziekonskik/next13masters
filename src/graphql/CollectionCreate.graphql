@@ -1,0 +1,8 @@
+# Write your query or mutation here
+mutation CollectionCreate($name: String!, $slug: String!) {
+	createCollection(data: { name: $name, slug: $slug }) {
+		data {
+			id
+		}
+	}
+}

@@ -14,7 +14,9 @@ import * as types from './graphql';
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "query ProductGetById($productId: ID) {\n  product(id: $productId) {\n    data {\n      attributes {\n        name\n        description\n        price\n        images {\n          data {\n            attributes {\n              url\n              previewUrl\n              alternativeText\n              width\n              height\n              caption\n              size\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.ProductGetByIdDocument,
+    "mutation CategoryCreate($name: String!, $slug: String!) {\n  createCategory(data: {name: $name, slug: $slug}) {\n    data {\n      id\n    }\n  }\n}": types.CategoryCreateDocument,
+    "mutation CollectionCreate($name: String!, $slug: String!) {\n  createCollection(data: {name: $name, slug: $slug}) {\n    data {\n      id\n    }\n  }\n}": types.CollectionCreateDocument,
+    "query ProductGetById($productId: ID) {\n  product(id: $productId) {\n    data {\n      attributes {\n        name\n        description\n        price\n        images {\n          data {\n            attributes {\n              url\n              alternativeText\n              width\n              height\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.ProductGetByIdDocument,
     "query ProductsGetListPaginated($pagination: PaginationArg) {\n  products(pagination: $pagination) {\n    data {\n      attributes {\n        ...ProductListItemFragment\n      }\n    }\n  }\n}": types.ProductsGetListPaginatedDocument,
     "fragment ProductListItemFragment on Product {\n  slug\n  price\n  name\n  images {\n    data {\n      attributes {\n        url\n        width\n        height\n        alternativeText\n      }\n    }\n  }\n  categories {\n    data {\n      attributes {\n        name\n      }\n    }\n  }\n}": types.ProductListItemFragmentFragmentDoc,
     "query ProductsGetCount {\n  products {\n    meta {\n      pagination {\n        total\n      }\n    }\n  }\n}": types.ProductsGetCountDocument,
@@ -23,7 +25,15 @@ const documents = {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query ProductGetById($productId: ID) {\n  product(id: $productId) {\n    data {\n      attributes {\n        name\n        description\n        price\n        images {\n          data {\n            attributes {\n              url\n              previewUrl\n              alternativeText\n              width\n              height\n              caption\n              size\n            }\n          }\n        }\n      }\n    }\n  }\n}"): typeof import('./graphql').ProductGetByIdDocument;
+export function graphql(source: "mutation CategoryCreate($name: String!, $slug: String!) {\n  createCategory(data: {name: $name, slug: $slug}) {\n    data {\n      id\n    }\n  }\n}"): typeof import('./graphql').CategoryCreateDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation CollectionCreate($name: String!, $slug: String!) {\n  createCollection(data: {name: $name, slug: $slug}) {\n    data {\n      id\n    }\n  }\n}"): typeof import('./graphql').CollectionCreateDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query ProductGetById($productId: ID) {\n  product(id: $productId) {\n    data {\n      attributes {\n        name\n        description\n        price\n        images {\n          data {\n            attributes {\n              url\n              alternativeText\n              width\n              height\n            }\n          }\n        }\n      }\n    }\n  }\n}"): typeof import('./graphql').ProductGetByIdDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
